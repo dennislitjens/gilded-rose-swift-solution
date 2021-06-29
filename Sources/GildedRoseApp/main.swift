@@ -1,4 +1,5 @@
 import GildedRose
+import os.log
 
 let items = [
     Item(name: "+5 Dexterity Vest", sellIn: 10, quality: 20),
@@ -26,5 +27,6 @@ for i in 0..<days {
         print(item);
     }
     print("");
-    app.updateQuality();
+    
+    app.updateQuality()
 }

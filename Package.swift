@@ -9,19 +9,13 @@ let package = Package(
             name: "GildedRose",
             targets: ["GildedRose"]),
     ],
-    dependencies: [
-        .package(
-            url: "https://github.com/ShawnBaek/Table.git",
-            from: "1.0.0"
-        )
-    ],
     targets: [
         .target(
             name: "GildedRose",
             dependencies: []),
         .target(
             name: "GildedRoseApp",
-            dependencies: ["GildedRose", "Table"]),
+            dependencies: ["GildedRose"]),
         .testTarget(
             name: "GildedRoseTests",
             dependencies: ["GildedRose"]),
