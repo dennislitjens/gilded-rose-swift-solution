@@ -1,12 +1,17 @@
 @testable import GildedRose
 import XCTest
 
-class GildedRoseTests: XCTestCase {
+class GildedRoseIntegrationTests: XCTestCase {
     
     private var app: GildedRose!
     
     override func setUp() {
-        self.app = GildedRose(items: [])
+        self.app = GildedRose(
+            items: [],
+            ruleFactory: GRRuleFactory(),
+            qualityOperationHandler: GRQualityOperationHandler(),
+            sellInRule: GRSellinRule()
+        )
     }
     
     func testFoo() {
@@ -14,7 +19,7 @@ class GildedRoseTests: XCTestCase {
         XCTAssertEqual("foo", app.items[0].name)
     }
     
-    //MARK: //Normal items
+    //MARK: -- Normal items
     
     func testNormalItemReducesSellInBy1() {
         app.items = [Item(name: "Elixir of the Mongoose", sellIn: 5, quality: 0)]
@@ -51,6 +56,8 @@ class GildedRoseTests: XCTestCase {
         XCTAssertEqual(0, app.items[0].quality)
     }
     
+    //MARK: -- AgedBrie
+    
     func testBrieIncreasesInQuality() {
         app.items = [Item(name: "Aged Brie", sellIn: 5, quality: 1)]
         app.updateQuality()
@@ -71,6 +78,8 @@ class GildedRoseTests: XCTestCase {
         XCTAssertEqual(50, app.items[0].quality)
     }
     
+    //MARK: -- Sulfuras Legendary item
+    
     func testSulfurasNeverDecreasesQuality() {
         app.items = [Item(name: "Sulfuras, Hand of Ragnaros", sellIn: 5, quality: 5)]
         app.updateQuality()
@@ -86,6 +95,8 @@ class GildedRoseTests: XCTestCase {
         XCTAssertEqual(5, app.items[0].sellIn)
     }
 
+    //MARK: -- BackstagePasses
+    
     func testBackstagePassIncreasesQualityBy1WhenMoreThen10SellinDays() {
         app.items = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 20, quality: 1)]
         app.updateQuality()
@@ -143,7 +154,7 @@ class GildedRoseTests: XCTestCase {
         XCTAssertEqual(50, app.items[0].quality)
     }
 
-    static var allTests : [(String, (GildedRoseTests) -> () throws -> Void)] {
+    static var allTests : [(String, (GildedRoseIntegrationTests) -> () throws -> Void)] {
         return [
             ("testFoo", testFoo),
         ]

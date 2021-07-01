@@ -13,7 +13,12 @@ let items = [
     // this conjured item does not work properly yet
     Item(name: "Conjured Mana Cake", sellIn: 3, quality: 6)]
 
-let app = GildedRose(items: items);
+let app = GildedRose(
+    items: items,
+    ruleFactory: GRRuleFactory(),
+    qualityOperationHandler: GRQualityOperationHandler(),
+    sellInRule: GRSellinRule()
+);
 
 var days = 2;
 if (CommandLine.argc > 1) {
