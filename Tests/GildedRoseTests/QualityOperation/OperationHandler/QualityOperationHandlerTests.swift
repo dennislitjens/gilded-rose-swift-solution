@@ -44,4 +44,14 @@ class QualityOperationHandlerTests: XCTestCase {
         let quality = self.qualityOperationHandler.degrade(4, withDegradeValue: 5)
         XCTAssertEqual(0, quality)
     }
+    
+    func testIncreaseReturnsIncreasedValueWhenItIsLessThenMax() {
+        let quality = self.qualityOperationHandler.increase(46, withIncreaseValue: 4)
+        XCTAssertEqual(50, quality)
+    }
+    
+    func testIncreaseReturnsMaxWhenIncreaseQualityIsMore() {
+        let quality = self.qualityOperationHandler.increase(48, withIncreaseValue: 4)
+        XCTAssertEqual(50, quality)
+    }
 }

@@ -18,7 +18,7 @@ class BackstagePassRuleTests: XCTestCase {
         }
     }
     
-    func testOperationIsIncreasesBy3WhenSellin5DaysOrLess() {
+    func testOperationIsIncreasedBy3WhenSellin5DaysOrLess() {
         let operation = BackstagePassRule(sellIn: 5).qualityOperation
         guard case QualityOperation.increases(with: 3) = operation else {
             XCTFail("Expected increases(with: 3) but got \(operation)")
@@ -26,7 +26,7 @@ class BackstagePassRuleTests: XCTestCase {
         }
     }
     
-    func testOperationIsIncreasesBy2WhenSellin10DaysOrLess() {
+    func testOperationIsIncreasedBy2WhenSellin10DaysOrLess() {
         let operation = BackstagePassRule(sellIn: 10).qualityOperation
         guard case QualityOperation.increases(with: 2) = operation else {
             XCTFail("Expected increases(with: 2) but got \(operation)")
@@ -34,7 +34,7 @@ class BackstagePassRuleTests: XCTestCase {
         }
     }
     
-    func testOperationIsIncreasesBy1WhenSellinMoreThen10Days() {
+    func testOperationIsIncreasedBy1WhenSellinMoreThen10Days() {
         let operation = BackstagePassRule(sellIn: 11).qualityOperation
         guard case QualityOperation.increases(with: 1) = operation else {
             XCTFail("Expected increases(with: 1) but got \(operation)")

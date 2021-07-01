@@ -18,6 +18,7 @@ public class GildedRose {
         for item in items {
             let itemType = itemTypeFactory.itemType(forItem: item)
             let rule = ruleFactory.createRule(forItemType: itemType, withSellIn: item.sellIn)
+            
             item.quality = qualityOperationHandler.calculateQuality(
                 withQualityOperation: rule.qualityOperation,
                 forQuality: item.quality

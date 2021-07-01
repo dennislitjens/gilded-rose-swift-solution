@@ -34,22 +34,22 @@ class GildedRoseUnitTests: XCTestCase {
     
     func testUpdateQualityCallsCreateRuleForEveryItem() {
         app.updateQuality()
-        XCTAssertEqual(2, ruleFactoryMock.calledMethods.count)
+        XCTAssertEqual(2, ruleFactoryMock.calledMethods.map { $0 == "createRule" }.count)
     }
     
     func testUpdateQualityCallsCalculateQualityForEveryItem() {
         app.updateQuality()
-        XCTAssertEqual(2, qualityOperationHandlerMock.calledMethods.count)
+        XCTAssertEqual(2, qualityOperationHandlerMock.calledMethods.map { $0 == "calculateQuality" }.count)
     }
     
     func testUpdateQualityCalculateSellinForEveryItem() {
         app.updateQuality()
-        XCTAssertEqual(2, sellinRuleMock.calledMethods.count)
+        XCTAssertEqual(2, sellinRuleMock.calledMethods.map { $0 == "calculateSellIn" }.count)
     }
     
     func testUpdateQualityCallsItemTypeForItem() {
         app.updateQuality()
-        XCTAssertEqual(2, itemTypeFactoryMock.calledMethods.count)
+        XCTAssertEqual(2, itemTypeFactoryMock.calledMethods.map { $0 == "itemType(forItem)" }.count)
     }
 }
 

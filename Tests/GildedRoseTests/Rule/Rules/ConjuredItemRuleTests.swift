@@ -9,7 +9,7 @@ import XCTest
 
 class ConjuredItemRuleTests: XCTestCase {
     
-    func testOperationIsDegradesWith4WhenSellinIsZeroOrLess() {
+    func testOperationIsDegradedWith4WhenSellinIsZeroOrLess() {
         let operation = ConjuredItemRule(sellIn: 0).qualityOperation
         guard case QualityOperation.degrades(with: 4) = operation else {
             XCTFail("Expected degrades(with: 4) but got \(operation)")
@@ -23,7 +23,7 @@ class ConjuredItemRuleTests: XCTestCase {
         }
     }
     
-    func testOperationIsDegradesWith2WhenSellinIsMoreThenZero() {
+    func testOperationIsDegradedWith2WhenSellinIsMoreThenZero() {
         let operation = ConjuredItemRule(sellIn: 1).qualityOperation
         guard case QualityOperation.degrades(with: 2) = operation else {
             XCTFail("Expected degrades(with: 2) but got \(operation)")

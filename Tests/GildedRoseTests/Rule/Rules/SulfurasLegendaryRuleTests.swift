@@ -9,7 +9,7 @@ import XCTest
 
 class SulfurasLegendaryRuleTests: XCTestCase {
     
-    func testOperationIsIncreaseBy1() {
+    func testOperationIsIncreasedBy1() {
         let operation = SulfurasLegendaryRule().qualityOperation
         guard case QualityOperation.doesNotChange = operation else {
             XCTFail("Expected doesNotChange but got \(operation)")
