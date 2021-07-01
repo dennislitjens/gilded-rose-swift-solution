@@ -6,25 +6,25 @@
 //
 
 public protocol RuleFactory {
-    func createRule(forItem item: Item) -> Rule
+    func createRule(forItemType itemType: ItemType, withSellIn: Int) -> Rule
 }
 
 public class GRRuleFactory: RuleFactory {
     
     public init() {}
     
-    public func createRule(forItem item: Item) -> Rule {
-        switch item.isTypeOff() {
+    public func createRule(forItemType itemType: ItemType, withSellIn sellIn: Int) -> Rule {
+        switch itemType {
         case .agedBrie:
             return AgedBrieRule()
         case .normalItem:
-            return NormalItemRule(sellIn: item.sellIn)
-        case .backstagePassTAFKAL80ETC:
-            return BackstagePassRule(sellIn: item.sellIn)
-        case .sulfurasHandOfRagnaros:
+            return NormalItemRule(sellIn: sellIn)
+        case .backstagePassItem:
+            return BackstagePassRule(sellIn: sellIn)
+        case .legendaryItem:
             return SulfurasLegendaryRule()
         case .conjuredItem:
-            return ConjuredItemRule(sellIn: item.sellIn)
+            return ConjuredItemRule(sellIn: sellIn)
         }
     }
 }

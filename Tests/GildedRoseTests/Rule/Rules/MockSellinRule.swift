@@ -8,11 +8,11 @@
 @testable import GildedRose
 
 public class MockSellinRule: SellinRule {
-    
+        
     public var calledMethods: [String] = []
     public init() {}
     
-    public func calculateSellIn(forItem item: Item) -> Int {
+    public func calculateSellIn(forItemType itemType: ItemType, withSellin sellIn: Int) -> Int {
         self.calledMethods.append("calculateSellIn")
         return 0
     }

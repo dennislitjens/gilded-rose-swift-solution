@@ -8,10 +8,10 @@
 @testable import GildedRose
 
 class MockRuleFactory: RuleFactory {
-    
+
     public var calledMethods: [String] = []
     
-    func createRule(forItem item: Item) -> Rule {
+    func createRule(forItemType itemType: ItemType, withSellIn: Int) -> Rule {
         calledMethods.append("createRule")
         return NormalItemRule(sellIn: 0)
     }

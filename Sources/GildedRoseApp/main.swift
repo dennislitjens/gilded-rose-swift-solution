@@ -15,6 +15,7 @@ let items = [
 
 let app = GildedRose(
     items: items,
+    itemTypeFactory: GRItemTypeFactory(),
     ruleFactory: GRRuleFactory(),
     qualityOperationHandler: GRQualityOperationHandler(),
     sellInRule: GRSellinRule()

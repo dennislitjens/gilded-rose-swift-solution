@@ -8,6 +8,7 @@ class GildedRoseIntegrationTests: XCTestCase {
     override func setUp() {
         self.app = GildedRose(
             items: [],
+            itemTypeFactory: GRItemTypeFactory(),
             ruleFactory: GRRuleFactory(),
             qualityOperationHandler: GRQualityOperationHandler(),
             sellInRule: GRSellinRule()
@@ -152,6 +153,20 @@ class GildedRoseIntegrationTests: XCTestCase {
         app.items = [Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 10, quality: 49)]
         app.updateQuality()
         XCTAssertEqual(50, app.items[0].quality)
+    }
+    
+    //MARK: -- Conjured Items
+    
+    func testConjuredItemsDegradeWith4WhenSellinIsPassed() {
+        app.items = [Item(name: "Conjured Mana Cake", sellIn: -1, quality: 8)]
+        app.updateQuality()
+        XCTAssertEqual(4, app.items[0].quality)
+    }
+    
+    func testConjuredItemsDegradeWith2WhenSellinIsNotPassed() {
+        app.items = [Item(name: "Conjured Mana Cake", sellIn: 1, quality: 8)]
+        app.updateQuality()
+        XCTAssertEqual(6, app.items[0].quality)
     }
 
     static var allTests : [(String, (GildedRoseIntegrationTests) -> () throws -> Void)] {

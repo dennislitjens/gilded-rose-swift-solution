@@ -6,17 +6,17 @@
 //
 
 public protocol SellinRule {
-    func calculateSellIn(forItem item: Item) -> Int
+    func calculateSellIn(forItemType itemType: ItemType, withSellin sellIn: Int) -> Int
 }
 
 public struct GRSellinRule: SellinRule {
     
     public init() {}
     
-    public func calculateSellIn(forItem item: Item) -> Int {
-        if item.sellIn >= 0 && item.isTypeOff() != .sulfurasHandOfRagnaros {
-            return item.sellIn - 1
+    public func calculateSellIn(forItemType itemType: ItemType, withSellin sellIn: Int) -> Int {
+        if sellIn >= 0 && itemType != .legendaryItem {
+            return sellIn - 1
         }
-        return item.sellIn
+        return sellIn
     }
 }

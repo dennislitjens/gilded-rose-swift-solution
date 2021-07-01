@@ -16,32 +16,27 @@ class RuleFactoryTests: XCTestCase {
     }
     
     func testAgedBrieReturnsAgedBrieRule() {
-        let agedBrie = Item(name: "Aged Brie", sellIn: 0, quality: 0)
-        let rule = ruleFactory.createRule(forItem: agedBrie)
+        let rule = ruleFactory.createRule(forItemType: .agedBrie, withSellIn: 0)
         XCTAssertTrue(type(of: rule) == AgedBrieRule.self)
     }
     
     func testNormalItemReturnsNormalItemRule() {
-        let normalItem = Item(name: "+5 Dexterity Vest", sellIn: 0, quality: 0)
-        let rule = ruleFactory.createRule(forItem: normalItem)
+        let rule = ruleFactory.createRule(forItemType: .normalItem, withSellIn: 0)
         XCTAssertTrue(type(of: rule) == NormalItemRule.self)
     }
     
     func testBackstagePassReturnsBackstagePass() {
-        let backstagePass = Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 0)
-        let rule = ruleFactory.createRule(forItem: backstagePass)
+        let rule = ruleFactory.createRule(forItemType: .backstagePassItem, withSellIn: 0)
         XCTAssertTrue(type(of: rule) == BackstagePassRule.self)
     }
     
     func testSulfurasLegendaryItemReturnsSulfurasLegendaryRule() {
-        let legendaryItem = Item(name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 0)
-        let rule = ruleFactory.createRule(forItem: legendaryItem)
+        let rule = ruleFactory.createRule(forItemType: .legendaryItem, withSellIn: 0)
         XCTAssertTrue(type(of: rule) == SulfurasLegendaryRule.self)
     }
     
     func testConjuredItemReturnsConjuredItemRule() {
-        let conjuredItem = Item(name: "Conjured Mana Cake", sellIn: 0, quality: 0)
-        let rule = ruleFactory.createRule(forItem: conjuredItem)
+        let rule = ruleFactory.createRule(forItemType: .conjuredItem, withSellIn: 0)
         XCTAssertTrue(type(of: rule) == ConjuredItemRule.self)
     }
 }

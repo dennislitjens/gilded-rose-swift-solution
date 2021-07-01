@@ -10,11 +10,13 @@ import XCTest
 class GildedRoseUnitTests: XCTestCase {
     
     private var app: GildedRose!
+    private var itemTypeFactoryMock: MockItemTypeFactory!
     private var ruleFactoryMock: MockRuleFactory!
     private var qualityOperationHandlerMock: MockQualityOperationHandler!
     private var sellinRuleMock: MockSellinRule!
     
     override func setUp() {
+        self.itemTypeFactoryMock = MockItemTypeFactory()
         self.ruleFactoryMock = MockRuleFactory()
         self.qualityOperationHandlerMock = MockQualityOperationHandler()
         self.sellinRuleMock = MockSellinRule()
@@ -23,6 +25,7 @@ class GildedRoseUnitTests: XCTestCase {
                 Item(name: "foo", sellIn: 0, quality: 0),
                 Item(name: "foo2", sellIn: 0, quality: 0)
             ],
+            itemTypeFactory: itemTypeFactoryMock,
             ruleFactory: ruleFactoryMock,
             qualityOperationHandler: qualityOperationHandlerMock,
             sellInRule: sellinRuleMock
@@ -42,6 +45,11 @@ class GildedRoseUnitTests: XCTestCase {
     func testUpdateQualityCalculateSellinForEveryItem() {
         app.updateQuality()
         XCTAssertEqual(2, sellinRuleMock.calledMethods.count)
+    }
+    
+    func testUpdateQualityCallsItemTypeForItem() {
+        app.updateQuality()
+        XCTAssertEqual(2, itemTypeFactoryMock.calledMethods.count)
     }
 }
 
