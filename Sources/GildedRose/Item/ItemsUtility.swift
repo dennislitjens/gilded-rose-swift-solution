@@ -17,6 +17,8 @@ enum ItemType: String {
     case backstagePassTAFKAL80ETC = "Backstage passes to a TAFKAL80ETC concert"
     case conjuredItem = "Conjured Mana Cake"
     case normalItem
+    
+    
 }
 
 

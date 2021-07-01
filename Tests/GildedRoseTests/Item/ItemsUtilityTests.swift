@@ -25,6 +25,11 @@ class ItemsUtilityTests: XCTestCase {
         XCTAssertEqual(ItemType.backstagePassTAFKAL80ETC, item.isTypeOff())
     }
     
+    func testConjuredItemReturnsCorrectType() {
+        let item = Item(name: "Conjured Mana Cake", sellIn: 0, quality: 0)
+        XCTAssertEqual(ItemType.conjuredItem, item.isTypeOff())
+    }
+    
     func testNotImplementedNameReturnsNormalItem() {
         let item = Item(name: "+5 Dexterity Vest", sellIn: 0, quality: 0)
         XCTAssertEqual(ItemType.normalItem, item.isTypeOff())

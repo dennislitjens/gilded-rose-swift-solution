@@ -19,7 +19,7 @@ class NormalItemRuleTests: XCTestCase {
         
         let operation2 = NormalItemRule(sellIn: -1).qualityOperation
         guard case QualityOperation.degrades(with: 2) = operation2 else {
-            XCTFail("Expected degrades(with: 2) but got \(operation)")
+            XCTFail("Expected degrades(with: 2) but got \(operation2)")
             return
         }
     }
@@ -27,7 +27,7 @@ class NormalItemRuleTests: XCTestCase {
     func testOperationIsDegradesWith1WhenSellinIsMoreThenZero() {
         let operation = NormalItemRule(sellIn: 1).qualityOperation
         guard case QualityOperation.degrades(with: 1) = operation else {
-            XCTFail("Expected degrades(with: 2) but got \(operation)")
+            XCTFail("Expected degrades(with: 1) but got \(operation)")
             return
         }
     }

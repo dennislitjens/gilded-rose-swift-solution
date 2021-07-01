@@ -28,14 +28,20 @@ class RuleFactoryTests: XCTestCase {
     }
     
     func testBackstagePassReturnsBackstagePass() {
-        let normalItem = Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 0)
-        let rule = ruleFactory.createRule(forItem: normalItem)
+        let backstagePass = Item(name: "Backstage passes to a TAFKAL80ETC concert", sellIn: 0, quality: 0)
+        let rule = ruleFactory.createRule(forItem: backstagePass)
         XCTAssertTrue(type(of: rule) == BackstagePassRule.self)
     }
     
     func testSulfurasLegendaryItemReturnsSulfurasLegendaryRule() {
-        let normalItem = Item(name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 0)
-        let rule = ruleFactory.createRule(forItem: normalItem)
+        let legendaryItem = Item(name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 0)
+        let rule = ruleFactory.createRule(forItem: legendaryItem)
         XCTAssertTrue(type(of: rule) == SulfurasLegendaryRule.self)
+    }
+    
+    func testConjuredItemReturnsConjuredItemRule() {
+        let conjuredItem = Item(name: "Conjured Mana Cake", sellIn: 0, quality: 0)
+        let rule = ruleFactory.createRule(forItem: conjuredItem)
+        XCTAssertTrue(type(of: rule) == ConjuredItemRule.self)
     }
 }

@@ -23,6 +23,8 @@ public class GRRuleFactory: RuleFactory {
             return BackstagePassRule(sellIn: item.sellIn)
         case .sulfurasHandOfRagnaros:
             return SulfurasLegendaryRule()
+        case .conjuredItem:
+            return ConjuredItemRule(sellIn: item.sellIn)
         }
     }
 }
